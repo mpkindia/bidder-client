@@ -1,8 +1,8 @@
-import React from 'react'
-import { Box, Heading, Text, Button } from 'grommet'
-import { SingleBidInputWithMutation } from '../components/BidBox'
-import { getAllBazaars } from '../apolloclient/queries/bazaar'
-import { graphql } from 'react-apollo'
+import { Box, Button, Heading, Text } from 'grommet';
+import React from 'react';
+import { graphql } from 'react-apollo';
+import { getAllBazaars } from '../apolloclient/queries/bazaar';
+import BidInputWithMutation from '../components/BidBox';
 
 const BazaarBox = ({ type, item: { open_active, name, open_time, close_active, close_time } }) => {
     if(type==='open')
@@ -55,11 +55,11 @@ class Single extends React.Component {
         return(
             <React.Fragment>
             { this.state.activeBid && 
-                <SingleBidInputWithMutation 
+                <BidInputWithMutation 
                     close={()=>this.setState({activeBid:null})}
                     bid_name={this.state.activeBid}
                     bazaar_id={this.state.bazaar_id}
-                    bid_type='single'
+                    bid_type='Single'
             />}
             <Box gridArea="main" background="light-1" >
                 <Box pad={{horizontal:"small"}}><Heading level="2">Single</Heading></Box>

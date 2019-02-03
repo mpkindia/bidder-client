@@ -1,7 +1,9 @@
-import React from 'react'
-import { Box, Heading, Text } from 'grommet'
-import { getAllBazaars } from '../apolloclient/queries/bazaar'
-import { graphql } from 'react-apollo'
+import { Box, Button, Heading, Text } from 'grommet';
+import React from 'react';
+import { graphql } from 'react-apollo';
+import { getAllBazaars } from '../apolloclient/queries/bazaar';
+import BidInputWithMutation from '../components/BidBox';
+
 // first of all get all bazaars 
 const BazaarBox = ({ type, item: {open_active, name, open_time, close_active, close_time } }) => {
     if(type==='open')
@@ -34,15 +36,32 @@ class DoublePatti extends React.Component {
     constructor(props){
         super()
         this.state = {
-            activeBid: ''
+            activeBid: null, // abstract the bazaar from here ,
+            bazaar_id: null
         }
+        this.handleOpenBid = this.handleOpenBid.bind(this)
+    }
+    async handleOpenBid(item){
+        await this.setState({ activeBid: `${item.name}$open`, bazaar_id: item.id })
+        console.log(this.state)
+    }
+    async handleCloseBid(item){
+        await this.setState({ activeBid: `${item.name}$close`, bazaar_id: item.id  })
+        console.log(this.state)
     }
     render() {
         let { loading, getAllBazaars } = this.props.data
         if(loading) return <Text>Loading</Text>
-        console.log(getAllBazaars)
+
         return(
             <React.Fragment>
+            { this.state.activeBid && 
+                <BidInputWithMutation 
+                    close={()=>this.setState({activeBid:null})}
+                    bid_name={this.state.activeBid}
+                    bazaar_id={this.state.bazaar_id}
+                    bid_type='Double-Patti'
+            />}
             <Box gridArea="main" background="light-1" >
                 <Box pad={{horizontal:"small"}}><Heading level="2">Double Patti</Heading></Box>
                 <Box
@@ -53,11 +72,15 @@ class DoublePatti extends React.Component {
                     gap="small"
                     wrap={true}
                 >
-                {getAllBazaars ? getAllBazaars.map((item,index)=>(
-                    <React.Fragment>
+                {getAllBazaars ?getAllBazaars.map((item)=>(
+                    <React.Fragment >
                         <Box gap="small" direction="row">
+                        <Button onClick={()=>this.handleOpenBid(item)} disabled={!item.open_active}>
                         <BazaarBox type='open' item={item} />
+                        </Button>
+                        <Button onClick={()=>this.handleCloseBid(item)} disabled={!item.close_active}>
                         <BazaarBox type='close' item={item}/>
+                        </Button>
                         </Box>    
                     </React.Fragment>
                 )): ''}
@@ -67,5 +90,8 @@ class DoublePatti extends React.Component {
         )
     }
 }
+
+
+
 
 export default graphql(getAllBazaars)(DoublePatti)
