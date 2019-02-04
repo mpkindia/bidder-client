@@ -1,22 +1,24 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import { Grommet, Box, Grid } from 'grommet'
-import { hp } from 'grommet-theme-hp'
-import Home from './pages/Home'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import { Box, Grid, Grommet } from 'grommet';
+// import { hp } from 'grommet-theme-hp';
+import { hpe } from 'grommet-theme-hpe';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import Footer from './components/Footer';
+import Header from './components/Header';
 import ModalContainer from './components/ModalContainer';
-import Single from './pages/Single';
-import Jodi from './pages/Jodi';
-import SinglePatti from './pages/SinglePatti';
-import DoublePatti from './pages/DoublePatti';
-import TriplePatti from './pages/TriplePatti';
-import HalfSangum from './pages/HalfSangum';
-import FullSangum from './pages/FullSangum';
 import Sidebar from './components/Sidebar';
 // import Misc from './pages/Misc';
 // import Settings from './pages/Settings';
 import CreditHistory from './pages/CreditHistory';
+import DoublePatti from './pages/DoublePatti';
+import FullSangum from './pages/FullSangum';
+import HalfSangum from './pages/HalfSangum';
+import Home from './pages/Home';
+import Jodi from './pages/Jodi';
+import Single from './pages/Single';
+import SinglePatti from './pages/SinglePatti';
+import TriplePatti from './pages/TriplePatti';
+
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -38,7 +40,7 @@ class Routes extends Component {
   render() {
     return (
         <Router>
-          <Grommet theme={hp}>
+          <Grommet theme={hpe}>
           <Route path="/" render={(props)=> 
                     <Header {...props} auth={this.state.auth} logout={()=>this.setState({ auth: false })}
                               loginModal={()=>this.setState({loginModal:true})} 
