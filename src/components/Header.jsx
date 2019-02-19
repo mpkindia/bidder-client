@@ -25,7 +25,8 @@ class Header extends React.Component {
         </Link>
         <Box >
         { this.props.auth ? <Menu
-            label="Menu"
+          label={`${user ? user.fullname : ''}`}
+
             items={[
             { label: "Credit History", onClick: () => {
                 this.props.history.push('/credits')

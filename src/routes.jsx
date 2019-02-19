@@ -11,8 +11,8 @@ import Jodi from './pages/Jodi';
 import SinglePatti from './pages/SinglePatti';
 import DoublePatti from './pages/DoublePatti';
 import TriplePatti from './pages/TriplePatti';
-import HalfSangum from './pages/HalfSangum';
-import FullSangum from './pages/FullSangum';
+// import HalfSangum from './pages/HalfSangum';
+// import FullSangum from './pages/FullSangum';
 import Sidebar from './components/Sidebar';
 // import Misc from './pages/Misc';
 // import Settings from './pages/Settings';
@@ -64,8 +64,8 @@ class Routes extends Component {
             <PrivateRoute exact path="/singlepatti" component={SinglePatti} />
             <PrivateRoute exact path="/doublepatti" component={DoublePatti} />
             <PrivateRoute exact path="/triplepatti" component={TriplePatti} />
-            <PrivateRoute exact path="/fulls" component={FullSangum} />
-            <PrivateRoute exact path="/halfs" component={HalfSangum} />
+            {/* <PrivateRoute exact path="/fulls" component={FullSangum} /> */}
+            {/* <PrivateRoute exact path="/halfs" component={HalfSangum} /> */}
             {/* <Route exact path="/settings" component={Settings} /> */}
             <PrivateRoute exact path="/credits" component={CreditHistory} />
           </Switch>

@@ -34,7 +34,7 @@ class Sidebar extends React.Component {
                     <Text>Triple Patti</Text>
                 </Box>
             </Button> 
-            <Button onClick={()=>(this.props.history.push('/halfs'))} hoverIndicator>
+            {/* <Button onClick={()=>(this.props.history.push('/halfs'))} hoverIndicator>
                 <Box pad={{ horizontal: "medium", vertical: "small" }}>
                     <Text>Half Sangum</Text>
                 </Box>
@@ -43,7 +43,7 @@ class Sidebar extends React.Component {
                 <Box pad={{ horizontal: "medium", vertical: "small" }}>
                     <Text>Full Sangum</Text>
                 </Box>
-            </Button> 
+            </Button>  */}
             {/* <Button onClick={()=>(this.props.history.push('/credits'))} hoverIndicator>
                 <Box pad={{ horizontal: "medium", vertical: "small" }}>
                     <Text>Credit History</Text>
