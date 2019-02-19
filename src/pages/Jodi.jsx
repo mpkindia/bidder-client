@@ -1,8 +1,8 @@
-import React from 'react'
-import { Box, Heading, Text, Button } from 'grommet'
-import { JodiBidInputWithMutation } from '../components/BidBox'
-import { getAllBazaars } from '../apolloclient/queries/bazaar'
-import { graphql } from 'react-apollo'
+import { Box, Button, Heading, Text } from 'grommet';
+import React from 'react';
+import { graphql } from 'react-apollo';
+import { getAllBazaars } from '../apolloclient/queries/bazaar';
+import BidInputWithMutation from '../components/BidBox';
 
 const BazaarBox = ({ type, item: { open_active, name, open_time, close_active, close_time } }) => {
     if(type==='open')
@@ -55,11 +55,11 @@ class Jodi extends React.Component {
         return(
             <React.Fragment>
             { this.state.activeBid && 
-                <JodiBidInputWithMutation 
+                <BidInputWithMutation 
                     close={()=>this.setState({activeBid:null})}
                     bid_name={this.state.activeBid}
                     bazaar_id={this.state.bazaar_id}
-                    bid_type='single'
+                    bid_type='Jodi'
             />}
             <Box gridArea="main" background="light-1" >
                 <Box pad={{horizontal:"small"}}><Heading level="2">Jodi</Heading></Box>
@@ -77,9 +77,9 @@ class Jodi extends React.Component {
                         <Button onClick={()=>this.handleOpenBid(item)} disabled={!item.open_active}>
                         <BazaarBox type='open' item={item} />
                         </Button>
-                        <Button onClick={()=>this.handleCloseBid(item)} disabled={!item.close_active}>
+                        {/* <Button onClick={()=>this.handleCloseBid(item)} disabled={!item.close_active}>
                         <BazaarBox type='close' item={item}/>
-                        </Button>
+                        </Button> */}
                         </Box>    
                     </React.Fragment>
                 )) :''}

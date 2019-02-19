@@ -1,10 +1,10 @@
-import React from 'react'
-import { Box, Text, Menu, Button , Clock } from 'grommet'
-import { Link } from 'react-router-dom'
-import { graphql } from 'react-apollo'
-import { getCurrentUser } from '../apolloclient/queries/user'
-import { Money } from 'grommet-icons'
-import logo from '../assets/whatsapp-logo.svg'
+import { Box, Button, Clock, Menu, Text } from 'grommet';
+import { Money } from 'grommet-icons';
+import React from 'react';
+import { graphql } from 'react-apollo';
+import { getCurrentUser } from '../apolloclient/queries/user';
+import smlogo from "../assets/logo.png";
+import logo from '../assets/whatsapp-logo.svg';
 class Header extends React.Component {
     render() {
         if(this.props.data.loading) return "loading..."
@@ -18,11 +18,12 @@ class Header extends React.Component {
              align="center"
              justify="between"
         >
-        <Link to="/" style={{textDecoration:'none'}}>
-        <Box> 
-        <Text color="white" size="large" weight="bold">Satta Matka Bazaar </Text>
-        </Box>
-        </Link>
+        {/* <Link to="/" style={{textDecoration:'none'}}> */}
+        <a href="/" style={{textDecoration:'none'}}><Box> 
+        {/* <Text color="white" size="large" weight="bold">Satta Matka Bazaar </Text> */}
+            <img src={smlogo} width="200px" height="50px" alt="Satta Matka Bazaar" />
+        </Box></a>
+        {/* </Link> */}
         <Box >
         { this.props.auth ? <Menu
           label={`${user ? user.fullname : ''}`}

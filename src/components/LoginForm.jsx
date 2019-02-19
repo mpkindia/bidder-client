@@ -1,9 +1,8 @@
-import React from 'react'
-import { Box, FormField, Heading, Button, TextInput } from 'grommet'
-import { Close } from 'grommet-icons'
-import { graphql } from 'react-apollo'
-import { login } from '../apolloclient/mutations/user'
-import { getCurrentUser } from '../apolloclient/queries/user'
+import { Box, Button, FormField, Heading, TextInput } from 'grommet';
+import { Close } from 'grommet-icons';
+import React from 'react';
+import { graphql } from 'react-apollo';
+import { login } from '../apolloclient/mutations/user';
 class LoginForm extends React.Component {
   constructor(props){
     super()
@@ -32,6 +31,8 @@ class LoginForm extends React.Component {
     await localStorage.setItem('bid-token', token)
     this.props.auth()
     this.props.onClose()
+    //reloading window
+    window.location.reload()
   }
   async componentWillMount() {
     await localStorage.removeItem('bid-token')

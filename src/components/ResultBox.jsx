@@ -1,7 +1,7 @@
-import React from 'react'
-import { Box, Text, Heading } from 'grommet'
-import { graphql } from 'react-apollo'
-import { getAllBazaars } from '../apolloclient/queries/bazaar'
+import { Box, Heading, Text } from 'grommet';
+import React from 'react';
+import { graphql } from 'react-apollo';
+import { getAllBazaars } from '../apolloclient/queries/bazaar';
 
 const ResultBox = ({ data }) => {
     // console.log(data)
@@ -24,15 +24,15 @@ const ResultBox = ({ data }) => {
 const ResultList = ({ data: { loading, getAllBazaars }}) => {
     if(loading) return 'Loading...'
     // console.log(getAllBazaars)
-    const amlist = []; const pmlist = []; 
-    getAllBazaars.map((item)=> { item.open_time.includes('AM') ? amlist.push(item) : pmlist.push(item)}) 
-    amlist.sort((a,b) => a.open_time - b.open_time )
-    pmlist.sort((a,b)=> {
-      console.log(a.open_time-b.open_time)
-      return(a.open_time - b.open_time)
-    })
-    console.log(pmlist)
-    let list = [...amlist, ...pmlist]
+    // const amlist = []; const pmlist = []; 
+    // getAllBazaars.map((item)=> { item.open_time.includes('AM') ? amlist.push(item) : pmlist.push(item)}) 
+    // amlist.sort((a,b) => a.open_time - b.open_time )
+    // pmlist.sort((a,b)=> {
+    //   console.log(a.open_time-b.open_time)
+    //   return(a.open_time - b.open_time)
+    // })
+    // console.log(pmlist)
+    // let list = [...amlist, ...pmlist]
     return (
         <Box
           direction="row-responsive"
@@ -42,7 +42,7 @@ const ResultList = ({ data: { loading, getAllBazaars }}) => {
           gap="small"
           wrap={true}
         >
-        {list ? list.map((item, index)=>
+        {getAllBazaars ? getAllBazaars.map((item, index)=>
           <ResultBox data={item} />        
         ): ''}
 
