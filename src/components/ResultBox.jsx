@@ -38,7 +38,7 @@ const ResultList = ({ data: { loading, getAllBazaars }}) => {
           direction="row-responsive"
           align="center"
           pad="small"
-          background="light-4"
+          background="light-1"
           gap="small"
           wrap={true}
         >

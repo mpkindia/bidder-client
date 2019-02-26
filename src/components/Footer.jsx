@@ -32,7 +32,7 @@ const Footer = ({ data: { loading, getLatestNotice }}) => {
             <NoticeRenderer str={getLatestNotice? getLatestNotice.text: ''}/>
             </Box>    
             <Box pad={{horizontal:"medium", vertical:"medium"}}
-                   background="light-3"
+                   background="neutral-1"
                    elevation align="center"
 
             >

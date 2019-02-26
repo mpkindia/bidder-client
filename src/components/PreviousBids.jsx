@@ -20,7 +20,7 @@ const columns = [
   },
   {
     property: "bid_number",
-    header: <Text>Bid Value</Text>
+    header: <Text>Bid Number</Text>
   },
   {
     property: "bid_value",
